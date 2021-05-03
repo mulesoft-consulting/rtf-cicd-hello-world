@@ -33,7 +33,7 @@ pipeline {
         APP_NAME = 'rtf-cicd-hello-world-impl'
       }
       steps {
-            sh 'mvn deploy -DmuleDeploy -Drtf.environment="%ENVIRONMENT%"'
+            sh 'mvn deploy -DmuleDeploy -Drtf.environment="$ENVIRONMENT"'
       }
     }
   }
