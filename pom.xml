@@ -52,7 +52,7 @@
 						<username>${anypoint.user}</username>
 						<password>${anypoint.password}</password>
 						<replicas>1</replicas>
-						<applicationName>${project.artifactId}</applicationName>
+						<applicationName>${project.artifactId}-${mule.env}</applicationName>
 						<provider>${provider}</provider>
 						<target>${target}</target>
 						<properties>
@@ -63,7 +63,7 @@
 						<deploymentSettings>
 							<http>
 								<inbound>
-									<publicUrl>https://${project.artifactId}.rtf-on-azure.mulesoftdemo.com</publicUrl>
+									<publicUrl>https://${project.artifactId}-${mule.env}.rtf-on-azure.mulesoftdemo.com</publicUrl>
 								</inbound>
 							</http>
 							<resources>
