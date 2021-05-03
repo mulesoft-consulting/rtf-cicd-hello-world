@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</groupId>
+  <artifactId>rtf-cicd-hello-world</artifactId>
+  <version>1.0.0</version>
+  <name>RTF CICD Hello World</name>
+  <properties>
+    <classifier>raml</classifier>
+    <main>rtf-cicd-hello-world.raml</main>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <apiVersion>1.0</apiVersion>
+    <projectId>ec059d17-0cb1-4050-90d1-97a1fbaeace2</projectId>
+    <branchId>master</branchId>
+    <commitId>d63da096395679ea59af5e5f2bfd644a0cd7bea9</commitId>
+    <keywords>_visual_designer</keywords>
+    <type>rest-api</type>
+    <mainFile>rtf-cicd-hello-world.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>

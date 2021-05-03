@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.mule.apikit</groupId>
+        <artifactId>raml-parser-interface-parent</artifactId>
+        <version>2.2.1</version>
+    </parent>
+
+    <artifactId>raml-parser-interface-impl-amf</artifactId>
+    <name>AMF parser interface implementation</name>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <licensePath>../LICENSE_HEADER.txt</licensePath>
+        <formatterConfigPath>../formatter.xml</formatterConfigPath>
+        <sonar.jacoco.reportPaths>../target/jacoco.exec</sonar.jacoco.reportPaths>
+
+        <amf.version>4.7.1</amf.version>
+        <amf.xml.extension.version>1.7.4</amf.xml.extension.version>
+        <json-simple.version>1.1.1</json-simple.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mule.apikit</groupId>
+            <artifactId>raml-parser-interface</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <!-- AMF Dependencies -->
+        <dependency>
+            <groupId>com.github.amlorg</groupId>
+            <artifactId>amf-client_2.12</artifactId>
+            <version>${amf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.amf</groupId>
+            <artifactId>amf-xml-extension_2.12</artifactId>
+            <version>${amf.xml.extension.version}</version>
+        </dependency>
+
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.mule.apikit</groupId>
+            <artifactId>raml-parser-interface-impl-v1</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.apikit</groupId>
+            <artifactId>raml-parser-interface-impl-v2</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

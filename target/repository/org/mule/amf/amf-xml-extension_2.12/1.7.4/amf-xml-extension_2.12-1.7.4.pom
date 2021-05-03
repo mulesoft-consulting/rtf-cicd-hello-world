@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mule.amf</groupId>
+    <artifactId>amf-xml-extension_2.12</artifactId>
+    <version>1.7.4</version>
+
+    <name>XML Extension for AMF</name>
+    <description>Module for exposing API's using AMF (RAML/OAS)</description>
+
+    <properties>
+        <scala.version>2.12.2</scala.version>
+
+        <amfVersion>4.1.0-0</amfVersion>
+        <muleScalaCommonVersion>0.1.1</muleScalaCommonVersion>
+        <xmlschemaCoreVersion>2.2.1</xmlschemaCoreVersion>
+
+        <!-- Test usages -->
+        <skipTests>true</skipTests> <!-- disable surefire and failsafe tests -->
+        <jUnitVersion>4.12</jUnitVersion>
+        <scalatestVersion>3.0.5</scalatestVersion>
+        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
+        <scoverage.scalacPluginVersion>1.4.0</scoverage.scalacPluginVersion>
+    </properties>
+
+    <dependencies>
+        <!-- Scala Dependencies -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!-- AMF Dependencies -->
+        <dependency>
+            <groupId>com.github.amlorg</groupId>
+            <artifactId>amf-client_2.12</artifactId>
+            <version>${amfVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.amlorg</groupId>
+            <artifactId>amf-validation_2.12</artifactId>
+            <version>${amfVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- XML Schema Dependencies -->
+        <dependency>
+            <groupId>org.apache.ws.xmlschema</groupId>
+            <artifactId>xmlschema-core</artifactId>
+            <version>${xmlschemaCoreVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rackspace.apache</groupId>
+            <artifactId>xerces2-xsd11</artifactId>
+            <version>2.11.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ibm.icu</groupId>
+                    <artifactId>icu4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>64.2</version>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${jUnitVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.12</artifactId>
+            <version>${scalatestVersion}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>mule-ee-releases</id>
+            <name>Mule Release Repository</name>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>mule-ee-snapshots</id>
+            <name>Mule Snapshot Repository</name>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>mule</id>
+            <name>Mule Repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+        </repository>
+        <repository>
+            <id>mulesoft-private</id>
+            <name>Mulesoft internal repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/private/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mule-plugin</id>
+            <name>Mule Repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>mulesoft-private</id>
+            <name>Mulesoft internal repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/private/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>3.3.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage.plugin.version}</version>
+                <configuration>
+                    <highlighting>true</highlighting>
+                    <minimumCoverage>80</minimumCoverage>
+                    <failOnMinimumCoverage>true</failOnMinimumCoverage>
+
+                    <!-- enable surefire and failsafe tests in SCoverage -->
+                    <additionalForkedProjectProperties>skipTests=false</additionalForkedProjectProperties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <phase>test</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

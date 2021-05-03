@@ -1,0 +1,24 @@
+{
+  "configs": [
+    "rtf-cicd-hello-world.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "fd27e1b2-65e3-4433-a232-73cf94a6bce5:rtf-cicd-hello-world:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.3.0",
+  "requiredProduct": "MULE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "log4j2.xml",
+        "rtf-cicd-hello-world.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

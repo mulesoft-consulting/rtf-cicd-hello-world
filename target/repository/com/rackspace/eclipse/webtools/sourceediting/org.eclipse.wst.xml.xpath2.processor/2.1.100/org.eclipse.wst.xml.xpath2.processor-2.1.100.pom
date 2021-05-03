@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2010, 2013 Eclipse Foundation and others.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Distribution License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/org/documents/edl-v10.php
+ 
+  Contributors:
+    David Carver - Initial implementation
+    Jesper Moller - Initial implementation
+    Thanh Ha (Eclipse Foundation) - CBI Webtools implementation
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <groupId>com.rackspace.eclipse.webtools.sourceediting</groupId>
+  <artifactId>org.eclipse.wst.xml.xpath2.processor</artifactId>
+  <version>2.1.100</version>
+  <packaging>jar</packaging>
+  <name>PsychoPath XPath 2.0 Processor</name>
+
+  <url>https://github.com/rackerlabs/olink-maven-plugin</url>
+  <licenses>
+    <license>
+      <name>Eclipse Public License Version 1.0</name>
+      <url>http://www.eclipse.org/org/documents/epl-v10.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>David Carver</name>
+      <roles>
+        <role>Initial implementation</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Jesper Møller</name>
+      <roles>
+        <role>Initial implementation</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Thanh Ha</name>
+      <organization>Eclipse Foundation</organization>
+      <roles>
+        <role>CBI Webtools implementation</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Sam Harwell</name>
+      <organization>Rackspace</organization>
+      <email>sam.harwell@rackspace.com</email>
+      <roles>
+        <role>Standalone release to Maven Central</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java6.home>${env.JAVA6_HOME}</java6.home>
+    <bootclasspath.java6>${java6.home}/lib/rt.jar</bootclasspath.java6>
+    <bootclasspath.compile>${bootclasspath.java6}</bootclasspath.compile>
+    <bootclasspath.testCompile>${bootclasspath.java6}</bootclasspath.testCompile>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.11.0</version>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>edu.princeton.cup</groupId>
+      <artifactId>java-cup</artifactId>
+      <version>10k</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>4.6</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+  <issueManagement>
+    <system>Bugzilla</system>
+    <url>https://bugs.eclipse.org/bugs/buglist.cgi?product=WTP%20Source%20Editing</url>
+  </issueManagement>
+
+  <scm>
+    <url>https://github.com/sharwell/webtools.sourceediting.xpath/tree/master/bundles/org.eclipse.wst.xml.xpath2.processor</url>
+    <connection>scm:git:git://github.com/sharwell/webtools.sourceediting.xpath.git</connection>
+    <developerConnection>scm:git:git@github.com:sharwell/webtools.sourceediting.xpath.git</developerConnection>
+    <tag>2.1.100</tag>
+  </scm>
+
+  <profiles>
+    <profile>
+      <id>sonatype-oss-release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.6</source>
+              <target>1.6</target>
+              <showWarnings>true</showWarnings>
+              <showDeprecation>true</showDeprecation>
+            </configuration>
+            <executions>
+              <execution>
+                <id>default-compile</id>
+                <configuration>
+                  <compilerArgs>
+                    <arg>-Xlint</arg>
+                    <arg>-Xlint:-serial</arg>
+                    <arg>-bootclasspath</arg>
+                    <arg>${bootclasspath.compile}</arg>
+                  </compilerArgs>
+                </configuration>
+              </execution>
+              <execution>
+                <id>default-testCompile</id>
+                <configuration>
+                  <compilerArgs>
+                    <arg>-Xlint</arg>
+                    <arg>-Xlint:-serial</arg>
+                    <arg>-bootclasspath</arg>
+                    <arg>${bootclasspath.testCompile}</arg>
+                  </compilerArgs>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+          <compilerArgs>
+            <arg>-Xlint</arg>
+            <arg>-Xlint:-serial</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <!-- override the version inherited from the parent -->
+        <version>2.4.1</version>
+        <configuration>
+          <tagNameFormat>@{version}</tagNameFormat>
+          <arguments>-Psonatype-oss-release ${release.arguments}</arguments>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <!-- override the version inherited from the parent -->
+        <version>2.16</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <!-- override the version inherited from the parent -->
+        <version>2.2.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <!-- override the version inherited from the parent -->
+        <version>2.9.1</version>
+        <configuration>
+          <quiet>true</quiet>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <!-- override the version inherited from the parent -->
+        <version>1.4</version>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>
