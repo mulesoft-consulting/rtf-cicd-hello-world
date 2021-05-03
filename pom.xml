@@ -6,7 +6,7 @@
 
 	<groupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</groupId>
 	<artifactId>rtf-cicd-hello-world-impl</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>rtf-cicd-hello-world</name>
@@ -63,11 +63,11 @@
 									<limit>800Mi</limit>
 								</memory>
 							</resources>
-							<http>
-								<inbound>
-									<publicUrl>https://${project.artifactId}.${rtf.target}.mulesoftdemo.com/</publicUrl>
-								</inbound>
-							</http>
+<!-- 							<http> -->
+<!-- 								<inbound> -->
+<!-- 									<publicUrl>https://${project.artifactId}.${rtf.target}.mulesoftdemo.com/</publicUrl> -->
+<!-- 								</inbound> -->
+<!-- 							</http> -->
 						</deploymentSettings>
 					</runtimeFabricDeployment>
 					<classifier>mule-application</classifier>
