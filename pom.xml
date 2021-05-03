@@ -17,6 +17,9 @@
 
 		<app.runtime>4.3.0-20210322</app.runtime>
 		<mule.maven.plugin.version>3.5.1</mule.maven.plugin.version>
+		
+		<anypoint.org.id>${project.groupId}</anypoint.org.id>
+		<app.name>${project.name}</app.name>
 	</properties>
 
 	<build>
@@ -35,8 +38,8 @@
 					<runtimeFabricDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>${anypoint.provider}</provider>
-						<environment>${deployment.environment}</environment>
-						<target>${deployment.target}</target>
+						<environment>Sandbox</environment>
+						<target>rtf-on-azure</target>
 						<muleVersion>${mule.version}</muleVersion>
 						<username>${anypoint.user}</username>
 						<password>${anypoint.password}</password>
@@ -126,7 +129,7 @@
 		<repository>
 			<id>anypoint-exchange-v2</id>
 			<name>Exchange Repository</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v2/organizations/fd27e1b2-65e3-4433-a232-73cf94a6bce5a/maven</url>
+            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${anypoint.org.id}/maven</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
