@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</groupId>
-	<artifactId>rtf-cicd-hello-world</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>rtf-cicd-hello-world-impl</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>rtf-cicd-hello-world</name>
@@ -43,41 +43,70 @@
 				<configuration>
 					<runtimeFabricDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<provider>${anypoint.provider}</provider>
-						<environment>${mule.env}</environment>
+						<muleVersion>4.3.0</muleVersion>
+						<username>dfoley-att</username>
+						<password>RTFDeployment1</password>
+						<applicationName>rtf-cicd-hello-world-impl</applicationName>
 						<target>rtf-on-azure</target>
-						<muleVersion>${mule.version}</muleVersion>
-						<server>anypoint-exchange-v2</server>
-
-						<username>${anypoint.user}</username>
-						<password>${anypoint.password}</password>
+						<environment>Sandbox</environment>
+						<businessGroupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</businessGroupId>
+						<provider>MC</provider>
 						<replicas>1</replicas>
-						<applicationName>${project.artifactId}-${mule.env}</applicationName>
-						<provider>${provider}</provider>
-						<target>${target}</target>
-						<properties>
-							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com</anypoint.platform.analytics_base_uri>
-							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
-							<mule.env>${mule.env}</mule.env>
-						</properties>
 						<deploymentSettings>
-							<http>
-								<inbound>
-									<publicUrl>https://${project.artifactId}-${mule.env}.rtf-on-azure.mulesoftdemo.com</publicUrl>
-								</inbound>
-							</http>
+							<enforceDeployingReplicasAcrossNodes>false</enforceDeployingReplicasAcrossNodes>
+							<updateStrategy>recreate</updateStrategy>
+							<clustered>false</clustered>
+							<forwardSslSession>false</forwardSslSession>
+							<lastMileSecurity>false</lastMileSecurity>
 							<resources>
 								<cpu>
-									<reserved>100m</reserved>
-									<limit>1000m</limit>
+									<reserved>20m</reserved>
+									<limit>1500m</limit>
 								</cpu>
 								<memory>
-									<reserved>800Mi</reserved>
-									<limit>800mi</limit>
+									<reserved>700Mi</reserved>
+									<limit>800Mi</limit>
 								</memory>
 							</resources>
+							<http>
+								<inbound>
+									<publicUrl>https://${project.artifactId}.rtf-on-azure.mulesoftdemo.com/</publicUrl>
+								</inbound>
+							</http>
 						</deploymentSettings>
 					</runtimeFabricDeployment>
+<!-- 					<runtimeFabricDeployment> -->
+<!-- 						<uri>https://anypoint.mulesoft.com</uri> -->
+<!-- 						<provider>${anypoint.provider}</provider> -->
+<!-- 						<environment>${mule.env}</environment> -->
+<!-- 						<target>rtf-on-azure</target> -->
+<!-- 						<muleVersion>${mule.version}</muleVersion> -->
+<!-- 						<server>anypoint-exchange-v2</server> -->
+
+<!-- 						<username>${anypoint.user}</username> -->
+<!-- 						<password>${anypoint.password}</password> -->
+<!-- 						<replicas>1</replicas> -->
+<!-- 						<applicationName>${project.artifactId}-${mule.env}</applicationName> -->
+<!-- 						<provider>${provider}</provider> -->
+<!-- 						<target>${target}</target> -->
+<!-- 						<deploymentSettings> -->
+<!-- 							<http> -->
+<!-- 								<inbound> -->
+<!-- 									<publicUrl>https://${project.artifactId}.rtf-on-azure.mulesoftdemo.com</publicUrl> -->
+<!-- 								</inbound> -->
+<!-- 							</http> -->
+<!-- 							<resources> -->
+<!-- 								<cpu> -->
+<!-- 									<reserved>100m</reserved> -->
+<!-- 									<limit>1000m</limit> -->
+<!-- 								</cpu> -->
+<!-- 								<memory> -->
+<!-- 									<reserved>800Mi</reserved> -->
+<!-- 									<limit>800mi</limit> -->
+<!-- 								</memory> -->
+<!-- 							</resources> -->
+<!-- 						</deploymentSettings> -->
+<!-- 					</runtimeFabricDeployment> -->
 					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
