@@ -26,7 +26,7 @@ pipeline {
           sh 'mvn -f pom.xml deploy -Dmule.artifact=“/Users/dennis.foley/RTF/CICD/rtf-cicd-hello-world/target/rtf-cicd-hello-world-1.0.0-SNAPSHOT-mule-application.jar”'
       }
     }
-
+mvn 
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'

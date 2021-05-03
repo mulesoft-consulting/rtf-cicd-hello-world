@@ -17,9 +17,15 @@
 
 		<app.runtime>4.3.0-20210322</app.runtime>
 		<mule.maven.plugin.version>3.5.1</mule.maven.plugin.version>
-		
+		<maven.deploy.plugin.version>2.8.1</maven.deploy.plugin.version>
+
 		<anypoint.org.id>${project.groupId}</anypoint.org.id>
-		<app.name>${project.name}</app.name>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<provider>MC</provider>
+		<target>rtf-on-azure</target>
+		<mule.env>Sandbox</mule.env>
 	</properties>
 
 	<build>
@@ -38,18 +44,26 @@
 					<runtimeFabricDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>${anypoint.provider}</provider>
-						<environment>Sandbox</environment>
+						<environment>${mule.env}</environment>
 						<target>rtf-on-azure</target>
 						<muleVersion>${mule.version}</muleVersion>
+						<server>Exchange2</server>
+
 						<username>${anypoint.user}</username>
 						<password>${anypoint.password}</password>
 						<replicas>1</replicas>
-						<applicationName>${app.name}</applicationName>
+						<applicationName>${project.artifactId}</applicationName>
+						<provider>${provider}</provider>
+						<target>${target}</target>
+						<properties>
+							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com</anypoint.platform.analytics_base_uri>
+							<anypoint.platform.base_uri>https://anypoint.mulesoft.com/</anypoint.platform.base_uri>
+							<mule.env>${mule.env}</mule.env>
+						</properties>
 						<deploymentSettings>
 							<http>
 								<inbound>
-									<!-- <publicUrl>https://srautnginxrtf.env.services.mulesoft.com/${env.prefix}${project.name}</publicUrl> -->
-									<publicUrl>https://${app.name}.rtf-on-azure.mulesoftdemo.com</publicUrl>
+									<publicUrl>https://${project.artifactId}.rtf-on-azure.mulesoftdemo.com</publicUrl>
 								</inbound>
 							</http>
 							<resources>
@@ -127,9 +141,9 @@
 
 	<distributionManagement>
 		<repository>
-			<id>anypoint-exchange-v2</id>
+			<id>Exchange2</id>
 			<name>Exchange Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${anypoint.org.id}/maven</url>
+			<url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${project.groupId}/maven</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>
