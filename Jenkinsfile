@@ -26,14 +26,14 @@ pipeline {
           sh 'mvn -f pom.xml deploy'
       }
     }
-mvn 
+
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
         APP_NAME = 'rtf-cicd-hello-world'
       }
       steps {
-            sh ' mvn deploy -DmuleDeploy'
+            sh 'mvn deploy -DmuleDeploy'
       }
     }
   }
