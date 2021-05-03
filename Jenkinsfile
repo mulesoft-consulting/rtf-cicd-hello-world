@@ -21,6 +21,12 @@ pipeline {
       }
     }
 
+    stage('Deploy to Exchange') {
+      steps {
+          sh "mvn -f pom.xml deploy"
+      }
+    }
+
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
