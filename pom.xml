@@ -6,7 +6,7 @@
 
 	<groupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</groupId>
 	<artifactId>rtf-cicd-hello-world-impl</artifactId>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
 	<name>rtf-cicd-hello-world</name>
@@ -46,7 +46,7 @@
 						<muleVersion>4.3.0</muleVersion>
 						<server>anypoint-exchange-v2</server>
 						<applicationName>rtf-cicd-hello-world-impl</applicationName>
-						<target>rtf-on-azure</target>
+						<target>${rtf.target}</target>
 						<environment>${rtf.environment}</environment>
 						<businessGroupId>fd27e1b2-65e3-4433-a232-73cf94a6bce5</businessGroupId>
 						<provider>MC</provider>

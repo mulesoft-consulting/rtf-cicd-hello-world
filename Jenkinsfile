@@ -30,10 +30,10 @@ pipeline {
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
-        APP_NAME = 'rtf-cicd-hello-world-impl'
+        TARGET = 'rtf-on-azure'
       }
       steps {
-            sh 'mvn deploy -DmuleDeploy -Drtf.environment="$ENVIRONMENT"'
+            sh 'mvn deploy -DmuleDeploy -Drtf.environment="$ENVIRONMENT" -Drtf.target="$TARGET"'
       }
     }
   }
