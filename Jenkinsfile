@@ -33,7 +33,7 @@ pipeline {
         APP_NAME = 'rtf-cicd-hello-world-impl'
       }
       steps {
-            sh 'mvn deploy -DmuleDeploy -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Drtf.environment="%ENVIRONMENT%"'
+            sh 'mvn deploy -DmuleDeploy -Drtf.environment="%ENVIRONMENT%"'
       }
     }
   }
