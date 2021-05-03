@@ -130,7 +130,7 @@ output application/json
 output application/json
 ---
 {
-	"greeting": "Hello AT&T!",
+	"greeting": "Hello World!",
 	"from":  (attributes.remoteAddress as String splitBy (":"))[0] replace "/" with ''
 }]]></ee:set-payload>
             </ee:message>

@@ -30,10 +30,10 @@ pipeline {
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
-        APP_NAME = 'rtf-cicd-hello-world'
+        APP_NAME = 'rtf-cicd-hello-world-impl'
       }
       steps {
-            sh 'mvn deploy -DmuleDeploy'
+            sh 'mvn deploy -DmuleDeploy -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Drtf.environment="%ENVIRONMENT%"'
       }
     }
   }
