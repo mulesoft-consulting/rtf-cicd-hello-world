@@ -30,7 +30,7 @@ pipeline {
      stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
-        TARGET = 'rtf-on-aks'
+        TARGET = 'rtf-on-azure'
       }
       steps {
             sh 'mvn deploy -DmuleDeploy -Drtf.environment="$ENVIRONMENT" -Drtf.target="$TARGET"'
